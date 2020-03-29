@@ -11,7 +11,7 @@ const App = props => {
             {players.map(player => {
                 return (
                     <>
-                        <Player name= {player.name} score={ player.score } />
+                        <Player key={player.id} name= {player.name} />
                     </>
                 )
             })}
