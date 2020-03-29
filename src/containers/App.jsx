@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Player from '../components/Player';
+import AddPlayerForm from '../components/AddPlayerForm';
 import '../app.css';
 import { players } from '../data/players';
 
@@ -45,6 +46,7 @@ const App = props => {
                     </>
                 )
             })}
+            <AddPlayerForm/>
         </div>
     )
 }
