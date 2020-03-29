@@ -5,9 +5,9 @@ const Player = props => {
     return (
         <div className="player">
             <span className="player-name">
-                Jordan
+                {props.name}
             </span>
-            <Counter/>    
+            <Counter score={props.score}/>    
         </div>
     )
 }
