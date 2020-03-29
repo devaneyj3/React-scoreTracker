@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Counter = props => {
-    const [ playerScore, setPlayerScore ] = useState(0);
 
-    const decrementScore = () => {
-        setPlayerScore(playerScore - 1);
-    }
-    const incrementScore = () => {
-        setPlayerScore(playerScore + 1);
-    }
+    const index = props.index;
+    
     return (
         <div className='counter'>
             <button 
                 className='counter-action decrement'
-                onClick={decrementScore}> - </button>
-            <span className="counter-score"> {playerScore} </span>
+                onClick={() => props.handleScoreChange(index, -1)}> - </button>
+            <span className="counter-score"> {props.score} </span>
             <button
                 className='counter-action increment'
-                onClick={incrementScore}> + </button>
+                onClick={() => props.handleScoreChange(index, +1)}> + </button>
         </div>
     )
 }

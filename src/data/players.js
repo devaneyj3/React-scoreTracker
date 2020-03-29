@@ -1,22 +1,27 @@
 export const players = [
     {
         id: 1,
-        name: "Jordan"
+        name: "Jordan",
+        score: 0
     },
     {
         id: 2,
-        name: "Leisa"
+        name: "Leisa",
+        score: 0
     },
     {
         id: 3,
-        name: "Dave"
+        name: "Dave",
+        score: 0
     },
     {
         id: 4,
-        name: "Jason"
+        name: "Jason",
+        score: 0
     },
     {
         id: 5,
-        name: "Josh"
+        name: "Josh",
+        score: 0
     }
 ]
