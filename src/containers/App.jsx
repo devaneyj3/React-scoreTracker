@@ -29,7 +29,7 @@ const App = props => {
     }
     return (
         <div className='scoreboard'>
-            <Header title='Scoreboard' totalPlayers={playersInfo.length}/>
+            <Header title='Scoreboard' players={playersInfo.players}/>
             {playersInfo.players.map((player, index) => {
                 return (
                     <>
