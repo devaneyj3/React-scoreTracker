@@ -28,6 +28,17 @@ const App = props => {
 
         })
     }
+    const addPlayer = value => {
+        setPlayers({
+            players: [...playersInfo.players,
+                {
+                    id: Date.now(),
+                    name: value,
+                    score: 0
+                }
+            ]
+        })
+    }
     return (
         <div className='scoreboard'>
             <Header title='Scoreboard' players={playersInfo.players}/>
@@ -46,7 +57,7 @@ const App = props => {
                     </>
                 )
             })}
-            <AddPlayerForm/>
+            <AddPlayerForm addPlayer={addPlayer}/>
         </div>
     )
 }

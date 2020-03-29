@@ -9,11 +9,16 @@ const AddPlayerForm = props => {
             playerName: e.target.value,
         })
     }
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.addPlayer(formValues.playerName);
+        setFormValues ({ playerName: ''});
+    }
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
                 type="text"
-                name=""
+                name="playerName"
                 value={formValues.playerName}
                 onChange={changeHandler}
                 placeholder="Enter a player's name"
