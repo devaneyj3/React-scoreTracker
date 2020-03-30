@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const AddPlayerForm = props => {
+const AddPlayerForm = ({addPlayer
+}) => {
     const [ formValues, setFormValues ] = useState({
         playerName: '',
     })
@@ -11,7 +12,7 @@ const AddPlayerForm = props => {
     }
     const handleSubmit = e => {
         e.preventDefault();
-        props.addPlayer(formValues.playerName);
+        addPlayer(formValues.playerName);
         setFormValues ({ playerName: ''});
     }
     return (
