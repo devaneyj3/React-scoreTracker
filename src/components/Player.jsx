@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Counter from './Counter';
 
 const Player = ({score, index, name, id, handleScoreChange, remove }) => {
@@ -16,6 +17,15 @@ const Player = ({score, index, name, id, handleScoreChange, remove }) => {
                 />    
         </div>
     )
+}
+
+Player.propTypes = {
+    score: PropTypes.number.isRequired, 
+    index: PropTypes.number, 
+    name: PropTypes.string.isRequired, 
+    id: PropTypes.number, 
+    handleScoreChange: PropTypes.func, 
+    remove: PropTypes.func
 }
 const playerComponent = React.memo(Player)
 export default playerComponent;

@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const Counter = ({index, handleScoreChange, score}) => {
     return (
@@ -12,6 +13,12 @@ const Counter = ({index, handleScoreChange, score}) => {
                 onClick={() => handleScoreChange(index, +1)}> + </button>
         </div>
     )
+}
+
+Counter.prototype = {
+    index: propTypes.number,
+    score: propTypes.number,
+    handleScoreChange: propTypes.func,
 }
 
 export default Counter;

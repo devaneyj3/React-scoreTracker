@@ -41,7 +41,7 @@ const App = props => {
     }
     return (
         <div className='scoreboard'>
-            <Header title='Scoreboard' players={playersInfo.players}/>
+            <Header players={playersInfo.players}/>
             {playersInfo.players.map((player, index) => {
                 return (
                     <>
