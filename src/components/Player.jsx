@@ -10,7 +10,7 @@ const Player = ({score, index, name, id, handleScoreChange, remove, isHighScore 
         <div className="player">
             <span className="player-name">
             <button className="remove-player" onClick={ () => remove(id)}>✖</button>
-            {isHighScore ? <Icon/> : null }
+            {isHighScore ? <Icon isHighScore = {isHighScore }/> : null }
             {name}
             </span>
             <Counter
