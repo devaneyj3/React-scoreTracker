@@ -5,7 +5,7 @@ import Counter from './Counter';
 import Icon from './Icon';
 
 
-const Player = ({score, index, name, id, isHighScore }) => {
+const Player = ({ index, name, id, isHighScore }) => {
     // console.log(name + ' rendered');
     const Context = useContext(ScoreboardContext);
     return (
@@ -16,7 +16,6 @@ const Player = ({score, index, name, id, isHighScore }) => {
             {name}
             </span>
             <Counter
-                score={score}
                 index={index}
                 />    
         </div>

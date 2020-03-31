@@ -18,7 +18,6 @@ const PlayerList = () => {
                     name= {player.name} 
                     isHighScore ={ context.highScore === player.score}
                     id={player.id}
-                    score={player.score}
                     />
                 </>
             )
