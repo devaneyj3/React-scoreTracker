@@ -1,4 +1,4 @@
-import React, { useState  } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Header from '../components/Header';
 import Player from '../components/Player';
 import AddPlayerForm from '../components/AddPlayerForm';
@@ -7,8 +7,24 @@ import { players } from '../data/players';
 
 const App = props => {
     const [ playersInfo, setPlayers ] = useState({
-        players: players })
+        players: players,
+    })
+    const [ highScore, setHighScore ] = useState(0);
 
+    useEffect(() => {
+        const getHighScore = () => {
+            const score = playersInfo.players.map(p => p.score)
+            const highScore = Math.max(...score)
+            if(highScore) {
+                return highScore;
+            }
+            
+            return null;
+            
+        }
+        const highScore = getHighScore();
+        setHighScore( highScore )
+    }, [playersInfo])
     const removePlayer = (id) => {
         const filteredPlayers = playersInfo.players.filter(player => player.id !== id);
         setPlayers( {
@@ -27,6 +43,7 @@ const App = props => {
             players: playersList
 
         })
+        
     }
     const addPlayer = value => {
         setPlayers({
@@ -40,16 +57,19 @@ const App = props => {
         })
     }
     return (
+        
         <div className='scoreboard'>
             <Header players={playersInfo.players}/>
             {playersInfo.players.map((player, index) => {
                 return (
+                
                     <>
                         <Player 
                             key={player.id} 
                             index={index}
                             name= {player.name} 
                             remove={removePlayer} 
+                            isHighScore ={ highScore === player.score}
                             id={player.id}
                             score={player.score}
                             handleScoreChange={handleScoreChange}

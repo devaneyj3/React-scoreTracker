@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Counter from './Counter';
 import Icon from './Icon';
 
-const Player = ({score, index, name, id, handleScoreChange, remove }) => {
-    console.log(name + ' rendered');
+const Player = ({score, index, name, id, handleScoreChange, remove, isHighScore }) => {
+    // console.log(name + ' rendered');
+    console.log(isHighScore)
     return (
         <div className="player">
             <span className="player-name">
             <button className="remove-player" onClick={ () => remove(id)}>✖</button>
-            <Icon/>
+            {isHighScore ? <Icon/> : null }
             {name}
             </span>
             <Counter
