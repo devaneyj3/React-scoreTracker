@@ -1,11 +1,12 @@
 import React, { useState, useEffect  } from 'react';
 import Header from '../components/Header';
-import Player from '../components/Player';
+import PlayersList from '../components/PlayersList';
 import AddPlayerForm from '../components/AddPlayerForm';
 import '../app.css';
 import { players } from '../data/players';
+import {ScoreboardContext} from '../components/Context/Scoreboard';
 
-const App = props => {
+const App = () => {
     const [ playersInfo, setPlayers ] = useState({
         players: players,
     })
@@ -59,25 +60,11 @@ const App = props => {
     return (
         
         <div className='scoreboard'>
-            <Header players={playersInfo.players}/>
-            {playersInfo.players.map((player, index) => {
-                return (
-                
-                    <>
-                        <Player 
-                            key={player.id} 
-                            index={index}
-                            name= {player.name} 
-                            remove={removePlayer} 
-                            isHighScore ={ highScore === player.score}
-                            id={player.id}
-                            score={player.score}
-                            handleScoreChange={handleScoreChange}
-                            />
-                    </>
-                )
-            })}
-            <AddPlayerForm addPlayer={addPlayer}/>
+            <ScoreboardContext.Provider value={ {playersInfo, handleScoreChange, highScore, removePlayer, addPlayer} }>
+            <Header/>
+            <PlayersList />
+            <AddPlayerForm />
+            </ScoreboardContext.Provider>
         </div>
     )
 }

@@ -1,9 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { ScoreboardContext } from './Context/Scoreboard';
 
-const Stats = ({players}) => {
+const Stats = () => {
 
-    const totalScore = players.reduce((total, player) => {
+    const obj = useContext(ScoreboardContext);
+
+    const totalScore = obj.playersInfo.players.reduce((total, player) => {
         return total += player.score;
     }, 0 )
     return (
@@ -11,7 +13,7 @@ const Stats = ({players}) => {
             <tbody>
                 <tr>
                 <td>Players:</td>
-                <td> {players.length}</td>
+                <td> {obj.playersInfo.players.length}</td>
                 </tr>
                 <tr>
                 <td>Total Points:</td>
@@ -20,12 +22,6 @@ const Stats = ({players}) => {
             </tbody>
         </table>
     )
-}
-
-Stats.propTypes = {
-    players: PropTypes.arrayOf(PropTypes.shape({
-        score: PropTypes.number
-    }))
 }
 
 export default Stats;

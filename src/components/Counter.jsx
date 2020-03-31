@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ScoreboardContext } from './Context/Scoreboard';
 import propTypes from 'prop-types';
 
-const Counter = ({index, handleScoreChange, score}) => {
+const Counter = ({index, score}) => {
+    const context = useContext(ScoreboardContext);
     return (
         <div className='counter'>
             <button 
                 className='counter-action decrement'
-                onClick={() => handleScoreChange(index, -1)}> - </button>
+                onClick={() => context.handleScoreChange(index, -1)}> - </button>
             <span className="counter-score"> {score} </span>
             <button
                 className='counter-action increment'
-                onClick={() => handleScoreChange(index, +1)}> + </button>
+                onClick={() => context.handleScoreChange(index, +1)}> + </button>
         </div>
     )
 }

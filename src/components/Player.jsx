@@ -1,21 +1,22 @@
-import React from 'react';
+import React , { useContext } from 'react';
+import { ScoreboardContext } from './Context/Scoreboard';
 import PropTypes from 'prop-types';
 import Counter from './Counter';
 import Icon from './Icon';
 
-const Player = ({score, index, name, id, handleScoreChange, remove, isHighScore }) => {
+
+const Player = ({score, index, name, id, isHighScore }) => {
     // console.log(name + ' rendered');
-    console.log(isHighScore)
+    const Context = useContext(ScoreboardContext);
     return (
         <div className="player">
             <span className="player-name">
-            <button className="remove-player" onClick={ () => remove(id)}>✖</button>
+            <button className="remove-player" onClick={ () => Context.removePlayer(id)}>✖</button>
             {isHighScore ? <Icon isHighScore = {isHighScore }/> : null }
             {name}
             </span>
             <Counter
                 score={score}
-                handleScoreChange={handleScoreChange}
                 index={index}
                 />    
         </div>
